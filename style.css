@@ -1,0 +1,213 @@
+
+
+.welcome-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    margin: 10px;
+    min-height: 80vh;
+}
+
+footer {
+    text-align: center;
+    color: #fefae0;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
+
+}
+
+.welcome-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: beige;
+    font-size: 55px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.start-instruction {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: beige;
+    font-size: 30px;
+    text-align: center;
+
+}
+
+.zoo-gate-img-container {
+    transition: transform 0.3s;
+    border-radius: 50px;
+    top: 300px;
+    width: 75%;
+}
+
+.enter-gate-img:hover {
+    transform: scale(1.1);
+}
+
+.enter-gate-img {
+    width: 100%;
+    height: auto;
+}
+
+
+body {
+    background-color: #606c38;
+    padding: 0;
+    margin: 0;
+}
+
+.main-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    margin: 10px;
+    display:none;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%; /* Adjust width as needed */
+    padding: 20px;
+    border-radius: 10px;
+    background: white; /* Background color for the game container */
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards in the container */
+    background-color: #606c38;
+    width: 100%; 
+    box-sizing: border-box; /* Ensure padding and margin are included in width calculation */
+    padding: 10px; 
+}
+
+.card-block {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    width: calc(25% - 20px); /* 4 cards per row, accounting for margin */
+    margin: 10px;
+    perspective: 1000px; /* Creates the 3D space */
+    border-color: solid 2px #582f0e;
+    border-radius: 15px; 
+    overflow: hidden;
+    
+}
+
+
+.cover-img {
+    object-fit: cover;
+    max-width: 330px;
+    height: 100%;
+}
+
+/* For the flip effect */
+.card-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Hides the back face when not visible */
+    transition: transform 0.6s; /* Smooth transition for the flip effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.animal-img {
+    max-width: fit-content;
+}
+.card-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images cover the card without distortion */
+    border-radius: 15px; /* Rounded corners for images */
+}
+
+.closed-card {
+    z-index: 2; /* On top of the flipped card */
+    width: 100%;
+    height: 100%;
+}
+
+.flipped-card {
+    background: #fefae0;
+    transform: rotateY(180deg); /* Hide the back face by default */
+    z-index: 1; /* Behind the front card */
+    
+    
+}
+
+/* Flip effect when the card is flipped */
+.card-block.is-flipped .closed-card {
+    transform: rotateY(180deg); /* Rotate the front face to hide it */
+}
+
+.card-block.is-flipped .flipped-card {
+    transform: rotateY(0deg); /* Rotate the back face to show it */
+}
+
+/* Hover effect for the front card */
+.closed-card:hover {
+    transform: scale(1.1); /* Slightly enlarge the card on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.move-counter {
+    margin: 10px;
+    color:#fefae0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.restart-button {
+    font-size: 25px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 15px;
+    border-color: #dda15e;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #fefae0;
+    color: #283618;
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+
+@media (min-width: 1050px) {
+    .cards-container {
+        max-width: 1200px; /* Adjust max-width to control the overall width */
+    }
+}
+
+    .card-block {
+        width: 200px; 
+        height: 200px; 
+        width: calc(25% - 20px); 
+}
+
+
+@media (min-width: 768px) and (max-width: 1050px) {
+    .card-block {
+        width: calc(33.33% - 20px); /
+    }
+}
+
+
+@media (max-width: 768px) {
+    .card-block {
+        width: calc(50% - 20px); 
+    }
+}
+
+
+@media (max-width: 530px) {
+    .card-block {
+        width: 150px; /* Set a minimum size for the cards */
+        height: 150px;
+    }
+}
