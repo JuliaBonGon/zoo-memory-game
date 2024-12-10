@@ -1,3 +1,9 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/546d661a-f145-4aea-8d44-7a70180c1ecd/deploy-status)](https://app.netlify.com/sites/zoomemorygamejulia/deploys)
+
+# My memory game
+For the class exercise explained below, I wanted to create a simple, child friendly memory game for my little son.
+I was able to code this after only 2 month since I started learning.
+
 # Memory game 🧠
 
 - Repository: `memory-game`

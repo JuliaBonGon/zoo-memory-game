@@ -1,0 +1,10 @@
+
+.cover-img {
+    object-fit:contain;
+    width: 100px;
+}
+
+.animal-img {
+    object-fit:contain; 
+    width: 80px;
+}

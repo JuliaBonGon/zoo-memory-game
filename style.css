@@ -1,17 +1,16 @@
-
-
 .welcome-page-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content horizontally */
-    margin: 10px;
+    align-items: center; 
+    margin: 0 auto;
     min-height: 80vh;
+    width: 100%;
 }
 
 footer {
     text-align: center;
     color: #fefae0;
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-bottom: 20px;
 
@@ -30,14 +29,18 @@ footer {
     color: beige;
     font-size: 30px;
     text-align: center;
-
+    margin: 0 20px;
 }
 
 .zoo-gate-img-container {
-    transition: transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
     border-radius: 50px;
     top: 300px;
     width: 75%;
+    max-width: 2000px;
 }
 
 .enter-gate-img:hover {
@@ -45,10 +48,10 @@ footer {
 }
 
 .enter-gate-img {
-    width: 100%;
+    width: 80%;
     height: auto;
+    transition: transform 0.3s ease-in-out;
 }
-
 
 body {
     background-color: #606c38;
@@ -59,7 +62,7 @@ body {
 .main-page-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content horizontally */
+    align-items: center; 
     margin: 10px;
     display:none;
 }
@@ -68,35 +71,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%; /* Adjust width as needed */
+    width: 100%; 
     padding: 20px;
     border-radius: 10px;
-    background: white; /* Background color for the game container */
+    background: white; 
 }
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the cards in the container */
+    justify-content: space-around; 
     background-color: #606c38;
     width: 100%; 
-    box-sizing: border-box; /* Ensure padding and margin are included in width calculation */
+    box-sizing: border-box;
     padding: 10px; 
 }
 
 .card-block {
     position: relative;
-    height: 200px;
-    width: 200px;
-    width: calc(25% - 20px); /* 4 cards per row, accounting for margin */
+    height: 150px;
+    width: calc(25% - 20px); 
     margin: 10px;
-    perspective: 1000px; /* Creates the 3D space */
+    perspective: 1000px;
     border-color: solid 2px #582f0e;
     border-radius: 15px; 
-    overflow: hidden;
-    
+    overflow: hidden;  
 }
-
 
 .cover-img {
     object-fit: cover;
@@ -104,56 +104,53 @@ body {
     height: 100%;
 }
 
-/* For the flip effect */
 .card-face {
     width: 100%;
     height: 100%;
     position: absolute;
-    backface-visibility: hidden; /* Hides the back face when not visible */
-    transition: transform 0.6s; /* Smooth transition for the flip effect */
+    backface-visibility: hidden; 
+    transition: transform 0.6s ease-in-out; 
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
 }
 
 .animal-img {
     max-width: fit-content;
 }
+
 .card-face img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures images cover the card without distortion */
-    border-radius: 15px; /* Rounded corners for images */
+    object-fit: cover; 
+    border-radius: 15px; 
 }
 
 .closed-card {
-    z-index: 2; /* On top of the flipped card */
+    z-index: 2; 
     width: 100%;
     height: 100%;
 }
 
 .flipped-card {
     background: #fefae0;
-    transform: rotateY(180deg); /* Hide the back face by default */
-    z-index: 1; /* Behind the front card */
-    
-    
+    transform: rotateY(180deg); 
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 }
 
-/* Flip effect when the card is flipped */
 .card-block.is-flipped .closed-card {
-    transform: rotateY(180deg); /* Rotate the front face to hide it */
+    transform: rotateY(180deg); 
 }
 
 .card-block.is-flipped .flipped-card {
-    transform: rotateY(0deg); /* Rotate the back face to show it */
+    transform: rotateY(0deg); 
 }
 
-/* Hover effect for the front card */
 .closed-card:hover {
-    transform: scale(1.1); /* Slightly enlarge the card on hover */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    transform: scale(1.1); 
+    cursor: pointer;
 }
 
 .move-counter {
@@ -177,37 +174,27 @@ body {
     margin: 20px 0 40px;
 }
 
+@media (max-width: 425px) {
+    .card-block {
+        height: 80px; 
+    }
 
-@media (min-width: 1050px) {
-    .cards-container {
-        max-width: 1200px; /* Adjust max-width to control the overall width */
+    .cover-img {
+        object-fit:contain;
+        width: 85px;
+    }
+
+    .animal-img {
+        object-fit:contain; 
+        width: 85px;
+    }
+    .start-instruction {
+        font-size: 24px; 
+        margin: 0 15px;
+    }
+    footer {
+        font-size: 15px;
+        line-height: 1.5;
     }
 }
 
-    .card-block {
-        width: 200px; 
-        height: 200px; 
-        width: calc(25% - 20px); 
-}
-
-
-@media (min-width: 768px) and (max-width: 1050px) {
-    .card-block {
-        width: calc(33.33% - 20px); /
-    }
-}
-
-
-@media (max-width: 768px) {
-    .card-block {
-        width: calc(50% - 20px); 
-    }
-}
-
-
-@media (max-width: 530px) {
-    .card-block {
-        width: 150px; /* Set a minimum size for the cards */
-        height: 150px;
-    }
-}

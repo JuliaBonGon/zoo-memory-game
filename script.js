@@ -1,22 +1,9 @@
 const mainPageContainer = document.querySelector('.main-page-container');
 
-const moveCounterElement = document.querySelector('.move-counter'); // Select the move counter element
+const moveCounterElement = document.querySelector('.move-counter'); 
 const restartButton = document.getElementById('restart'); 
 
-let counter = 0; // Initialize the counter
-
-
-// //TODO:add background music?
-// const backgroundMusic = new Audio("sounds/birds-in-zoo.wav");
-// backgroundMusic.loop = true;
-// backgroundMusic.volume = 0.5;
-// backgroundMusic.play();
-
-// const stopMusicButton = document.getElementById('stop-music');
-// stopMusicButton.addEventListener('click', () => {
-//     backgroundMusic.pause();
-//     backgroundMusic.currentTime = 0;
-// });
+let counter = 0; 
 
 const welcomePageContainer = document.querySelector('.welcome-page-container');
 const welcomeBlock = document.createElement("div");
@@ -43,7 +30,6 @@ enterGateImg.classList.add("enter-gate-img");
 zooGateImgContainer.appendChild(enterGateImg);
 enterGateImg.setAttribute("src", "img/zoogate no background.png");
 
-
 enterGateImg.addEventListener("click", () => {
     welcomePageContainer.style.display = "none";
     mainPageContainer.style.display = "flex";
@@ -54,10 +40,6 @@ enterGateImg.addEventListener("click", () => {
 
 });
 
-
-
-
-// TODO: Create cards 
 const cardsCollection = [
     {
         name: "tiger",
@@ -141,28 +123,10 @@ const cardsCollection = [
     }
 ];
 
-// Shuffle the cards
 function shuffleCards () {
 cardsCollection.sort (()=> Math.random()-0.5);
-
 }
 
-
-// // TODO: Create animal img collection
-// const animalImagesCollection = {
-//     tiger: "img/tigre.png",
-//     elephant: "img/elefante.png",
-//     crocodile: "img/cocodrilo.png",
-//     gorilla: "img/gorila.png",
-//     monkey: "img/mono.png",
-//     snake: "img/serpiente.png",
-//     zebra: "img/zebra.png",
-//     penguin: "img/pinguino.png"
-// };
-
-
-
-// Create and add cards to the container
 function createCards() {
 const cardsContainer = document.querySelector('.cards-container');
     cardsContainer.innerHTML = '';
@@ -173,7 +137,6 @@ cardsCollection.forEach((card) => {
     cardUnit.classList.add("card-block");
     cardsContainer.appendChild(cardUnit);
     
-    // Create the closed (front) card
     const closedCard = document.createElement("div");
     closedCard.classList.add("card-face", "closed-card");
     const coverImage = document.createElement("img");
@@ -182,7 +145,6 @@ cardsCollection.forEach((card) => {
     closedCard.appendChild(coverImage);
     cardUnit.appendChild(closedCard);
     
-    // Create the flipped (back) card
     const flippedCard = document.createElement("div");
     flippedCard.classList.add("card-face", "flipped-card");
     const animalImage = document.createElement("img");
@@ -191,7 +153,6 @@ cardsCollection.forEach((card) => {
     flippedCard.appendChild(animalImage);
     cardUnit.appendChild(flippedCard);
 
-    // Event listener to flip cards
     cardUnit.addEventListener('click', flipCard);
 });
 }
@@ -201,34 +162,28 @@ function startGame() {
     moveCounterElement.textContent = `Moves: ${counter}`;
     shuffleCards();
     createCards();
-    resetBoard(); // Reset the board state
+    resetBoard(); 
 }
-// TODO: Let player turn  cards and compare them
 
-// Track the flipped cards
 let hasFlippedCard = false;
 let firstCard, secondCard;
-let lockBoard = false; // Prevents flipping more than two cards
+let lockBoard = false; 
 
-
-//Sound effect
 const matchSound = new Audio("sounds/dats-right.wav");
 const noMatchSound = new Audio("sounds/dats-wrong.wav");
-// Event listener for card flip
+
 function flipCard() {
-    if (lockBoard) return; // Exit if the board is locked
-    if (this === firstCard) return; // Prevent double-click on the same card
+    if (lockBoard) return; 
+    if (this === firstCard) return; 
 
     this.classList.add('is-flipped');
 
     if (!hasFlippedCard) {
-        // First card clicked
         hasFlippedCard = true;
         firstCard = this;
         return;
     }
 
-    // Second card clicked
     secondCard = this;
     hasFlippedCard = false;
 
@@ -236,59 +191,47 @@ function flipCard() {
     incrementCounter();
 }
 
-//TODO: Increase move counter
 function incrementCounter() {
     counter++;
     moveCounterElement.textContent = `Moves: ${counter}`;
 }
 
-// Check if the two flipped cards match
 function checkForMatch() {
     const isMatch = firstCard.querySelector('.flipped-card img').src === 
                     secondCard.querySelector('.flipped-card img').src;
 
     if (isMatch) {
         matchSound.play(); 
-        disableCards(); // Disable cards if they match
+        disableCards(); 
     } else {
         noMatchSound.play(); 
-        unflipCards(); // Flip them back if they don't match
+        unflipCards(); 
     }
 }
 
-
-// Disable matched cards
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-    resetBoard(); // Reset the board for the next move
+    resetBoard(); 
 }
 
-// Flip back the cards if they don't match
 function unflipCards() {
     lockBoard = true;
     setTimeout(() => {
         firstCard.classList.remove('is-flipped');
         secondCard.classList.remove('is-flipped');
-        resetBoard(); // Reset the board for the next move
+        resetBoard(); 
     }, 1000);
 }
 
-// Reset the board after each move
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
 
-// Add event listeners to the cards
+
 document.querySelectorAll('.card-block').forEach(card => card.addEventListener('click', flipCard));
 
-//TODO: Add event listener to restart game
-// Start game function
-
-
 restartButton.addEventListener("click", () => {
-    // mainPageContainer.style.visibility = "hidden";
-    // WelcomePageContainer.style.display = "flex"; // Show the welcome page again
-    startGame(); // Reinitialize the game
+    startGame(); 
 });
