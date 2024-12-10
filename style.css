@@ -189,12 +189,15 @@ body {
         width: 85px;
     }
     .start-instruction {
-        font-size: 24px; 
+        font-size: 20px; 
         margin: 0 15px;
     }
     footer {
         font-size: 15px;
         line-height: 1.5;
+    }
+    .welcome-title {
+        font-size: 30px;
     }
 }
 
