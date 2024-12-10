@@ -2,9 +2,9 @@
 
 # My memory game
 For the class exercise explained below, I wanted to create a simple, child friendly memory game for my little son.
-I was able to code this after only 2 month since I started learning.
+I was able to code this after only 2 months since I started learning to code.
 
-# Memory game 🧠
+# Memory game exercise 🧠
 
 - Repository: `memory-game`
 - Type of Challenge: `Learning Challenge`
